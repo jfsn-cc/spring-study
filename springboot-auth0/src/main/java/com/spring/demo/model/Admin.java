@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ import java.util.Date;
  * @描述
  */
 @Data
+@NoArgsConstructor
 @TableName("ums_admin")
 public class Admin {
     @TableId(type = IdType.AUTO)
