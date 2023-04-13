@@ -19,6 +19,9 @@ public class ShiroConfig {
     private ShiroFilterFactoryBean shiroFilterFactoryBean() {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager());
+        factoryBean.setLoginUrl("/login");
+        //factoryBean.setFilterChainDefinitionMap();
+        //factoryBean.setFilters();
         return factoryBean;
     }
 
@@ -26,6 +29,8 @@ public class ShiroConfig {
         SecurityManager securityManager = new DefaultSecurityManager(shiroRealm);
         return securityManager;
     }
+
+
 
 
 }

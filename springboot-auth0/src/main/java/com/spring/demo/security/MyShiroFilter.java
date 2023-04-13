@@ -1,5 +1,8 @@
 package com.spring.demo.security;
 
+import com.spring.demo.model.Admin;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.filter.authc.AuthenticationFilter;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +17,12 @@ public class MyShiroFilter extends AuthenticationFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
-        boolean loginRequest = isLoginRequest(request, response);
-        return loginRequest;
+        Subject subject = SecurityUtils.getSubject();
+        Admin admin = (Admin) subject.getPrincipal();
+        if (admin == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

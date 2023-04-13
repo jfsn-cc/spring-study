@@ -24,7 +24,7 @@ public class ShiroRealm extends AuthorizingRealm {
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String username = upToken.getUsername();
         Admin byName = adminDao.getByName(username);
-        AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, byName.getPassword(), getName());
+        AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, byName.getPassword().toCharArray(), this.getName());
         return authenticationInfo;
     }
 
